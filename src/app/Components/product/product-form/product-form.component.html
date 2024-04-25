@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <h1 class="my-2 text-muted text-center">
+    {{ productId == 0 ? "Add Product" : "Edit Product" }}
+  </h1>
+  <form (submit)="productHandler()">
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Product Name</label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="name"
+        class="form-control"
+        id="exampleInputName"
+        placeholder="Enter Product Name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPrice" class="form-label">Price</label>
+      <input
+        type="number"
+        name="price"
+        [(ngModel)]="price"
+        class="form-control"
+        id="exampleInputPrice"
+        placeholder="Enter Product Price"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputDescription" class="form-label">Description</label>
+      <input
+        type="text"
+        name="description"
+        [(ngModel)]="description"
+        class="form-control"
+        id="exampleInputDescription"
+        placeholder="Enter Product Description"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputImageUrl" class="form-label">Image URL</label>
+      <input
+        type="text"
+        name="imageUrl"
+        [(ngModel)]="imageUrl"
+        class="form-control"
+        id="exampleInputImageUrl"
+        placeholder="Enter Product Image URL"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputQuantity" class="form-label">Quantity</label>
+      <input
+        type="number"
+        name="quantity"
+        [(ngModel)]="quentity"
+        class="form-control"
+        id="exampleInputQuantity"
+        placeholder="Enter Product Quantity"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success">
+      {{ productId == 0 ? "Add Product" : "Edit Product" }}
+    </button>
+  </form>
+</div>
