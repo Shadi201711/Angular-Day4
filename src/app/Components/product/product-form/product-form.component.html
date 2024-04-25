@@ -2,61 +2,104 @@
   <h1 class="my-2 text-muted text-center">
     {{ productId == 0 ? "Add Product" : "Edit Product" }}
   </h1>
-  <form (submit)="productHandler()">
+  <form [formGroup]="productForm" (submit)="productHandler()">
     <div class="mb-3">
       <label for="exampleInputName" class="form-label">Product Name</label>
       <input
         type="text"
         name="name"
-        [(ngModel)]="name"
+        formControlName="name"
         class="form-control"
         id="exampleInputName"
         placeholder="Enter Product Name"
       />
+    <ng-container *ngIf="getName.touched " >
+      <div *ngIf="getName.hasError('required')" id ="ErrorMessage" class="form-text text-danger">
+        Product Name is required
+
+        </div>
+        <div *ngIf="getName.hasError('minlength')" id ="ErrorMessage" class="form-text text-danger">
+          Product Name Length Must be > 3
+
+          </div>
+    </ng-container>
     </div>
     <div class="mb-3">
       <label for="exampleInputPrice" class="form-label">Price</label>
       <input
         type="number"
         name="price"
-        [(ngModel)]="price"
+        formControlName="price"
         class="form-control"
         id="exampleInputPrice"
         placeholder="Enter Product Price"
       />
+      <ng-container *ngIf="getPrice.touched " >
+        <div *ngIf="getPrice.hasError('required')" id ="ErrorMessage" class="form-text text-danger">
+          Product price is required
+
+          </div>
+      </ng-container>
     </div>
     <div class="mb-3">
       <label for="exampleInputDescription" class="form-label">Description</label>
       <input
         type="text"
         name="description"
-        [(ngModel)]="description"
+        formControlName="description"
         class="form-control"
         id="exampleInputDescription"
         placeholder="Enter Product Description"
       />
+      <ng-container *ngIf="getDescription.touched " >
+        <div *ngIf="getDescription.hasError('required')" id ="ErrorMessage" class="form-text text-danger">
+          Product Description is required
+
+          </div>
+          <div *ngIf="getDescription.hasError('minlength')" id ="ErrorMessage" class="form-text text-danger">
+            Product Description Length Must be > 10
+
+            </div>
+      </ng-container>
     </div>
     <div class="mb-3">
       <label for="exampleInputImageUrl" class="form-label">Image URL</label>
       <input
         type="text"
         name="imageUrl"
-        [(ngModel)]="imageUrl"
+        formControlName="imageUrl"
         class="form-control"
         id="exampleInputImageUrl"
         placeholder="Enter Product Image URL"
       />
+      <!-- <ng-container *ngIf="getName.touched " >
+        <div *ngIf="getName.hasError('required')" id ="ErrorMessage" class="form-text text-danger">
+          Product Name is required
+
+          </div>
+          <div *ngIf="getName.hasError('minlength')" id ="ErrorMessage" class="form-text text-danger">
+            Product Name Length Must be > 3
+
+            </div>
+      </ng-container> -->
     </div>
     <div class="mb-3">
       <label for="exampleInputQuantity" class="form-label">Quantity</label>
       <input
         type="number"
         name="quantity"
-        [(ngModel)]="quentity"
+        formControlName="quantity"
         class="form-control"
         id="exampleInputQuantity"
         placeholder="Enter Product Quantity"
       />
+      <ng-container *ngIf="getQuantity.touched " >
+        <div *ngIf="getQuantity.hasError('required')" id ="ErrorMessage" class="form-text text-danger">
+          Product Quantity is required
+
+          </div>
+
+      </ng-container>
     </div>
 
     <button type="submit" class="btn btn-success">
